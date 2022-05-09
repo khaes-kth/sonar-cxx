@@ -148,7 +148,7 @@ public final class Interceptor {
 
     var classBytes = cv.toByteArray();
 
-    Class<?> cls = new ClassLoader(superClass.getClassLoader()) {
+    Class<?> cls = new ClassLoader(Thread.currentThread().getContextClassLoader()) {
       public Class<?> defineClass() {
         return defineClass(className, classBytes, 0, classBytes.length);
       }
